@@ -1,7 +1,18 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta http-equiv="refresh" content="0; URL=./" />
+    <meta charset="UTF-8" />
+    <title>Redirecting...</title>
+    <script>
+      // 👇 Делает редирект на index.html с сохранением пути
+      const pathname = location.pathname;
+      const search = location.search;
+      const hash = location.hash;
+      const newUrl = '/fro/' + 'index.html' + '?redirect=' + encodeURIComponent(pathname + search + hash);
+      location.replace(newUrl);
+    </script>
   </head>
-  <body></body>
+  <body>
+    Redirecting...
+  </body>
 </html>
