@@ -1,0 +1,113 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 221.2 83.2% 53.3%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 221.2 83.2% 53.3%;
+    --radius: 0.5rem;
+    --card-gradient-blue: linear-gradient(to bottom right, #f7faff, #eaf2ff);
+    --card-gradient-success: linear-gradient(to bottom right, #f0fff5, #e0fae9);
+    --card-gradient-warning: linear-gradient(to bottom right, #fffbeb, #fef6d6);
+    --card-gradient-error: linear-gradient(to bottom right, #fff0f0, #ffe6e6);
+    --card-gradient-info: linear-gradient(to bottom right, #f0f8ff, #e5f2ff);
+    --success-gradient: linear-gradient(to right, #32CD32, #28a745);
+    --warning-gradient: linear-gradient(to right, #FFA500, #FF8C00);
+    --error-gradient: linear-gradient(to right, #FF6B6B, #FF0000);
+    --info-gradient: linear-gradient(to right, #3498DB, #2980B9);
+    --secondary-gradient: linear-gradient(to right, #6C757D, #495057);
+    --blue-cyan-gradient: linear-gradient(135deg, #0EA5E9 0%, #06B6D4 100%);
+    --cyan-sky-gradient: linear-gradient(135deg, #06B6D4 0%, #0EA5E9 100%);
+    --deep-ocean-gradient: linear-gradient(135deg, #1E3A8A 0%, #3B82F6 100%);
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 217.2 91.2% 59.8%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 224.3 76.3% 48%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollbar-thin::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+.scrollbar-thin::-webkit-scrollbar-track {
+  background: transparent;
+}
+.scrollbar-thin::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+.scrollbar-thin::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Calendar specific styles */
+.calendar-day {
+  transition: all 0.2s ease;
+}
+.calendar-day:hover {
+  transform: translateY(-2px);
+}
+.calendar-event {
+  transition: all 0.1s ease;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.calendar-event:hover {
+  transform: scale(1.02);
+}

@@ -1,0 +1,171 @@
+
+/* Agreement Print Styles */
+
+@media print {
+  /* Reset all styles for printing */
+  * {
+    box-shadow: none !important;
+    text-shadow: none !important;
+    filter: none !important;
+    -ms-filter: none !important;
+    margin: 0;
+    padding: 0;
+  }
+
+  /* Hide non-essential elements */
+  header, nav, footer, .no-print, button, .sidebar, 
+  .print-hidden, [data-role="print-hidden"] {
+    display: none !important;
+  }
+
+  /* Set page to A4 */
+  @page {
+    size: A4 portrait;
+    margin: 10mm 15mm;
+  }
+
+  /* Make sure only the agreement is visible */
+  body * {
+    visibility: hidden;
+  }
+  
+  .agreement-print,
+  .agreement-print * {
+    visibility: visible;
+  }
+  
+  .agreement-print {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 210mm !important;
+    height: auto !important;
+    transform: none !important;
+    box-shadow: none !important;
+    background-color: white !important;
+    overflow: visible !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  /* General typography */
+  body {
+    font-family: 'Inter', Arial, sans-serif;
+    color: #000;
+    background-color: #fff;
+    font-size: 10pt;
+    line-height: 1.4;
+  }
+
+  /* Ensure tables look good */
+  table {
+    width: 100%;
+    border-collapse: collapse !important;
+    page-break-inside: auto;
+  }
+
+  tr {
+    page-break-inside: avoid;
+    page-break-after: auto;
+  }
+
+  th, td {
+    border: 1px solid #ddd !important;
+    padding: 4px 6px !important;
+    text-align: left;
+  }
+
+  /* Make links print properly */
+  a {
+    text-decoration: none;
+    color: #000;
+  }
+
+  /* Avoid broken images */
+  img {
+    max-width: 100% !important;
+  }
+
+  /* Avoid page breaks inside important elements */
+  h1, h2, h3, h4, h5, h6, img, table, figure, .no-break {
+    page-break-inside: avoid;
+  }
+
+  /* Avoid breaking signatures across pages */
+  .signature-section {
+    page-break-inside: avoid;
+  }
+
+  /* Handle long URLs in print */
+  a[href]:after {
+    content: none !important;
+  }
+
+  /* Make gradients/colors print better */
+  .bg-gradient-to-br, 
+  .bg-gradient-to-r {
+    background: #0EA5E9 !important;
+    color: white !important;
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+
+  /* No background images */
+  [style*="background-image"] {
+    background-image: none !important;
+  }
+
+  /* Ensure white text on dark backgrounds is visible */
+  .text-white {
+    color: white !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  
+  /* Preserve colors and backgrounds in headers */
+  .agreement-print .bg-gradient-to-br,
+  .agreement-print .bg-gradient-to-r,
+  .agreement-print [class*="bg-sky-"],
+  .agreement-print [class*="bg-blue-"] {
+    color: white !important;
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+  
+  /* Make sure signature areas are preserved */
+  .signature-area {
+    min-height: 80px;
+    border: 1px dashed #aaa !important;
+  }
+  
+  /* Make the authorization section stay together */
+  .authorization-section {
+    page-break-inside: avoid;
+  }
+  
+  /* Two-column layout for customer info */
+  .customer-info-grid {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 1rem !important;
+  }
+  
+  /* Enhanced signature display */
+  .signature-container {
+    border: 1px solid #ddd !important;
+    border-radius: 4px !important;
+    padding: 8px !important;
+    background-color: #f9f9f9 !important;
+  }
+  
+  /* Brand watermark */
+  .unidoc-watermark {
+    position: fixed;
+    bottom: 10mm;
+    right: 10mm;
+    font-size: 8pt;
+    color: #aaa;
+    opacity: 0.7;
+  }
+}
+

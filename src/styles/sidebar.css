@@ -1,0 +1,174 @@
+
+/* Hover-based sidebar expansion */
+.sidebar-hover-expand {
+  transition: width 0.3s ease;
+  width: var(--collapsed-width, 4rem);
+}
+
+.sidebar-hover-expand:hover {
+  width: var(--expanded-width, 16rem) !important;
+}
+
+/* Override the transition time for a smoother hover experience */
+.sidebar-hover-expand [data-sidebar="sidebar"],
+.sidebar-hover-expand [data-sidebar="menu-button"] > span,
+.sidebar-hover-expand [data-sidebar="group-label"] {
+  transition-duration: 0.2s !important;
+}
+
+/* Ensure sidebar is always visible and properly positioned */
+.sidebar-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  z-index: 50;
+  background: white;
+  width: var(--collapsed-width, 4rem);
+  transition: width 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid #e5e7eb;
+  overflow: hidden;
+}
+
+.sidebar-container:hover {
+  width: var(--expanded-width, 16rem);
+}
+
+/* Logo styling */
+.sidebar-logo {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  height: 4rem;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.sidebar-logo-text {
+  margin-left: 0.5rem;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #3366FF;
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.sidebar-container:hover .sidebar-logo-text {
+  opacity: 1;
+}
+
+/* Sidebar menu buttons style */
+.sidebar-menu-button {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+  transition: all 0.2s ease;
+  text-decoration: none;
+  color: #4b5563;
+}
+
+.sidebar-menu-button > svg {
+  min-width: 20px; /* Ensure icons have minimum width */
+  width: 20px;
+  height: 20px;
+}
+
+.sidebar-menu-button > span {
+  margin-left: 0.75rem;
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.sidebar-container:hover .sidebar-menu-button > span {
+  opacity: 1;
+}
+
+/* Main navigation section */
+.sidebar-nav {
+  flex: 1;
+  padding: 1rem 0.5rem;
+  overflow-y: auto;
+}
+
+/* User menu styling */
+.sidebar-user-menu {
+  padding: 0.75rem;
+  border-top: 1px solid #e5e7eb;
+  margin-top: auto;
+}
+
+.sidebar-user-button {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.sidebar-user-info {
+  margin-left: 0.75rem;
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.sidebar-container:hover .sidebar-user-info {
+  opacity: 1;
+}
+
+/* Main content adjustment to avoid overlap */
+.app-content {
+  margin-left: var(--collapsed-width, 4rem);
+  transition: margin-left 0.3s ease, width 0.3s ease;
+  width: calc(100% - var(--collapsed-width, 4rem));
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Adjust content width when sidebar is expanded */
+.sidebar-expanded .app-content {
+  margin-left: var(--expanded-width, 16rem);
+  width: calc(100% - var(--expanded-width, 16rem));
+}
+
+/* Standardize page content padding to ensure consistency */
+.app-content > div {
+  padding: 1.5rem;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .sidebar-container {
+    transform: translateX(-100%);
+    width: var(--expanded-width, 16rem);
+  }
+  
+  .sidebar-container.open {
+    transform: translateX(0);
+  }
+  
+  .sidebar-container.open .sidebar-logo-text,
+  .sidebar-container.open .sidebar-menu-button > span,
+  .sidebar-container.open .sidebar-user-info {
+    opacity: 1;
+  }
+  
+  .app-content {
+    margin-left: 0;
+    width: 100%;
+  }
+  
+  /* Adjust padding for mobile screens */
+  .app-content > div {
+    padding: 1rem;
+  }
+}
